@@ -1,0 +1,45 @@
+services:
+  db-ctf:
+    image: mysql:8.0
+    container_name: mysql_db_ctf
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ctf_db
+      MYSQL_USER: belldc
+      MYSQL_PASSWORD: password
+      TZ: America/Mexico_City
+      LANG: es_ES.UTF-8
+      LC_ALL: es_ES.UTF-8
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p230501"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+#    ports:
+#      - "3306:3306"
+    volumes:
+      - mysql_ctf_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./config/my.cnf:/etc/mysql/conf.d/my.cnf
+#    networks:
+#      - db-ctf-net
+
+  ctf-1:
+    build: .
+    container_name: ctf-1
+    restart: always
+    depends_on:
+      db-ctf:
+        condition: service_healthy
+#    ports:
+#      - "5000:5000"
+    environment:
+      DATABASE_URL: "mysql+pymysql://root:password@mysql_db_ctf/ctf_db"
+#    networks:
+#      - nginx-ctf-net
+#      - db-ctf-net
+
+volumes:
+  mysql_ctf_data:
+
