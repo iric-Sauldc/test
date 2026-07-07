@@ -1,0 +1,161 @@
+/* Estilo global */
+body {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    font-size: small;
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: #ffcc00;
+    margin-top: 20px;
+}
+
+strong {
+    font-size: medium;
+}
+
+.section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 90%;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}
+
+.section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.section ul li {
+    padding: 5px 0;
+}
+
+.section ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.section ul li a:hover {
+    text-decoration: underline;
+}
+
+.back-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #ffcc00;
+    color: #1e1e1e;
+    border: 2px solid #ff9900;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #ff9900;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .section {
+        max-width: 95%;
+        font-size: 0.9em;
+    }
+
+    .back-btn {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        font-size: 0.8em;
+        padding: 15px;
+    }
+
+    .back-btn {
+        font-size: 0.8em;
+        width: 90%;
+    }
+}
+
+
+h1 {
+    font-size: 1.8rem;
+    /* Ajuste del título principal */
+    text-align: center;
+    color: #ffcc00;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 1.4rem;
+    /* Ajuste de subtítulos */
+    text-align: center;
+    color: #ffcc00;
+    margin-top: 20px;
+}
+
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}
+
+p,
+ul,
+li,
+label,
+textarea,
+input {
+    font-size: 0.8rem;
+    /* Reducir texto general */
+}
+
+
+.alert {
+    font-size: 0.75rem;
+    /* Fuente más pequeña para mensajes */
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .container {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .container {
+        font-size: 0.75rem;
+    }
+}

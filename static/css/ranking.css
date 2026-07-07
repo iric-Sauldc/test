@@ -1,0 +1,150 @@
+body {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    font-family: 'Press Start 2P', cursive;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #ffcc00;
+}
+
+.container {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 900px;
+    margin: 50px auto;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #444;
+    color: #f1f1f1;
+}
+
+table, th, td {
+    border: 1px solid #666;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background-color: #555;
+    color: #ffcc00;
+}
+
+tr:nth-child(even) {
+    background-color: #3a3a3a;
+}
+
+tr:hover {
+    background-color: #555;
+}
+
+.btn-primary {
+    background-color: #ffcc00;
+    border: 1px solid #ff9900;
+    color: #1e1e1e;
+    font-size: 14px;
+    padding: 10px 20px;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    width: 200px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ff9900;
+}
+
+
+
+
+
+tbody tr:nth-child(even) {
+    background-color: #3a3a3a;
+}
+
+tbody tr:hover {
+    background-color: #555;
+}
+
+#filters {
+    display: flex;
+    flex-wrap: wrap; /* Para que los elementos se acomoden en líneas nuevas en pantallas pequeñas */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#filters label {
+    font-size: 0.8em; /* Texto más pequeño para optimizar espacio */
+}
+
+#filters input, #filters select {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 2px solid #ff9900;
+    background-color: #333;
+    color: #f1f1f1;
+    width: 100%; /* Toma todo el ancho en dispositivos pequeños */
+    max-width: 250px; /* Limita el tamaño en dispositivos grandes */
+}
+
+#estadisticas {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}
+
+#estadisticas ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#estadisticas li {
+    padding: 8px 0;
+    border-bottom: 1px solid #555;
+    color: #ffcc00;
+}
+
+#estadisticas li:last-child {
+    border-bottom: none;
+}
+
+a {
+    color: #ffcc00;
+    text-decoration: none;;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    #filters {
+        flex-direction: column; /* Coloca los filtros en una columna en pantallas pequeñas */
+    }
+
+    #filters input, #filters select {
+        max-width: 100%; /* Ocupa todo el ancho disponible */
+    }
+
+    table, th, td {
+        font-size: 12px; /* Reduce el tamaño de fuente */
+        padding: 8px;
+    }
+}

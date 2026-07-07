@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ desafio.nombre }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/challenges.css">
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>{{ desafio.nombre }}</h1>
+        <p>{{ desafio.descripcion }}</p>
+        {% if desafio.archivo %}
+            <div class="button-container">
+            <a href="{{ url_for('descargar_archivo', desafio_id=desafio.id) }}" class="download-btn">
+                <span>Descargar
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M.5 9.9v5.6c0 .5.4.9.9.9h12.2c.5 0 .9-.4.9-.9V9.9H13v5H3v-5H.5zm7-9.8v8.6L3.8 5.3 3 6.2l5 5 5-5-.8-.9-3.7 3.5V.1H7.5z"/>
+                    </svg>
+                </span>
+                <div class="progress"></div>
+            </a>
+            </div>
+        {% else %}
+            <p>No hay archivo asociado a este desafío.</p>
+        {% endif %}
+
+        <!-- Mensajes flash -->
+        {% if mensaje %}
+            <div class="alert alert-{{ mensaje[0] }} alert-dismissible fade show" role="alert">
+                {{ mensaje[1] }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+
+        <!-- Formulario para resolver desafío -->
+        {% if not completado %}
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="flag" class="form-label">Ingresa la flag:</label>
+                    <input type="text" class="form-control" id="flag" name="flag" placeholder="flag{...}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Flag</button>
+            </form>
+        {% else %}
+            <p class="text-muted">Este desafío ya ha sido completado. No puedes volver a resolverlo.</p>
+        {% endif %}
+
+        <br>
+        <a href="{{ url_for('subcategoria', subcategoria_id=desafio.subcategoria_id) }}" class="btn btn-secondary">Volver a la subcategoría</a>
+    </div>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

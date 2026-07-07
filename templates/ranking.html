@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="{{ url_for('static', filename='js/ranking.js') }}" defer></script>
+    <link rel="stylesheet" href="/static/css/ranking.css"
+
+</head>
+<body>
+    <h1>Ranking</h1>
+    <div id="filters">
+        <label for="search">Buscar Participante:</label>
+        <input type="text" id="search" placeholder="Buscar por usuario">
+        
+        <label for="sort">Ordenar por:</label>
+        <select id="sort">
+            <option value="puntuacion">Puntuación</option>
+            <option value="tiempo_total">Tiempo</option>
+            <option value="desafios_completados">Desafíos completados</option>
+        </select>
+    </div>
+
+    <table id="ranking-table">
+        <thead>
+            <tr>
+                <th>Posición</th>
+                <th>Usuario</th>
+                <th>Puntuación</th>
+                <th>Desafíos Completados</th>
+                <th>Tiempo Total</th>
+                <th>Penalizaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for participante in ranking_data %}
+            <tr data-puntuacion="{{ participante.puntuacion }}" 
+            data-tiempo_total="{{ participante.tiempo_total }}" 
+            data-desafios_completados="{{ participante.desafios_completados }}" >
+                <td>{{ participante.posicion }}</td>
+                <td><a href="{{ url_for('ranking_detalle', usuario_id=participante.id) }}">{{ participante.nombre }}</a></td>
+                <td>{{ participante.puntuacion }}</td>
+                <td>{{ participante.desafios_completados }}</td>
+                <td>{{ participante.tiempo_total }}</td>
+                <td>{{ participante.penalizaciones }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Volver al Inicio</a>
+
+    <div id="estadisticas">
+        <h2>Estadísticas Globales</h2>
+        <p>Total de Participantes: <span style="color: #ffcc00;">{{ estadisticas.total_participantes }}</span></p>
+        <p>Total de Desafíos Resueltos: <span style="color: #ffcc00;">{{ estadisticas.total_desafios_resueltos }}</span></p>
+        
+        <h3>Desafíos Más Difíciles:</h3>
+        <ul>
+            {% for desafio in estadisticas.desafios_mas_dificiles %}
+            <li>{{ desafio.nombre }}: {{ desafio.fallos }} fallos</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

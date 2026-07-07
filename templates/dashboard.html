@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CTF</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Dashboard</h1>
+        <h3>Bienvenido, {{ session.usuario_usuario }}</h3>
+
+        <div class="row">
+            <!-- Puntuación Total -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Puntuación Total</h5>
+                        <p class="card-text">{{ puntuacion_total }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nivel de Dificultad Completado -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Nivel de Dificultad</h5>
+                        <p class="card-text">Fácil: {{ niveles['Fácil'] }}, Medio: {{ niveles['Medio'] }}, Difícil: {{ niveles['Difícil'] }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Posición en el Ranking -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Posición en el Ranking</h5>
+                        <p class="card-text">#{{ posicion_ranking }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Progreso Porcentual -->
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Progreso Porcentual</h5>
+                        <p class="card-text">{{ progreso_porcentual | round(2) }}%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Último Desafío Completado -->
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Último Desafío Completado</h5>
+                        <p class="card-text">
+                            {% if ultimo_desafio_completado %}
+                                {{ ultimo_desafio_completado.desafio.nombre }}
+                            {% else %}
+                                No has completado ningún desafío aún.
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medallas o Logros -->
+        <h3>Medallas o Logros</h3>
+        <ul class="list-group">
+            {% for logro in logros %}
+                <li class="list-group-item">{{ logro }}</li>
+            {% endfor %}
+            {% if logros|length == 0 %}
+                <li class="list-group-item">Aún no has obtenido logros.</li>
+            {% endif %}
+        </ul>
+
+        <h3>Desafíos Completados</h3>
+        <ul class="list-group">
+            {% for desafio_completado in usuario.desafios_completados %}
+                {% if desafio_completado.es_correcta %}
+                    <li class="list-group-item">
+                        {{ desafio_completado.desafio.nombre }} - Puntuación: {{ desafio_completado.desafio.puntuacion }}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <br>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Volver al inicio</a>
+    </div>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

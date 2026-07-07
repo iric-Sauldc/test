@@ -1,0 +1,80 @@
+body {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    font-family: 'Press Start 2P', cursive;
+}
+
+h1 {
+    text-align: center;
+    color: #ffcc00;
+}
+
+.container {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 400px;
+    margin-top: 100px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}
+
+.form-control {
+    background-color: #444;
+    border: 1px solid #666;
+    color: #fff;
+}
+
+.form-control:focus {
+    background-color: #fff;
+    border-color: #ffcc00;
+}
+
+label {
+    color: #ffcc00;
+}
+
+.btn-primary {
+    background-color: #ffcc00;
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ff9900;
+}
+
+p {
+    color: #ffcc00;
+}
+
+footer {
+    margin-top: 30px;
+    color: #ffcc00;
+    text-align: center;
+}
+
+footer a {
+    color: #ffcc00;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #ffcc00;
+}
+
+.alert a {
+    color: #ffcc00;
+}
+
+.alert a:hover {
+    text-decoration: underline;
+}

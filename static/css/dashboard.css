@@ -1,0 +1,74 @@
+body {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    font-family: 'Press Start 2P', cursive;
+}
+
+h1, h3 {
+    text-align: center;
+    color: #ffcc00;
+}
+
+.container {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 1000px;
+    margin-top: 100px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card {
+    background-color: #444;
+    border: 1px solid #666;
+}
+
+.card-title {
+    font-size: 18px;
+    color: #ffcc00;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #f1f1f1;
+}
+
+.list-group-item {
+    background-color: #555;
+    color: #ffcc00;
+    border: 1px solid #666;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #ffcc00;
+    border: 1px solid #ff9900;
+    color: #1e1e1e;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ff9900;
+}
+
+.btn-secondary {
+    background-color: #444;
+    border: 1px solid #666;
+    color: #ffcc00;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #555;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link rel="icon" href="https://www.uttt.edu.mx/images/icono.png" type="image/x-icon" />
+    <meta name="description" content="CTF UTTT" />
+    <meta name="keywords" content="CTF, ctf, desafios, desafio, UTTT, uttt " />
+    <meta name="author" content="BellDC" />
+    <title>CTF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Bienvenido al CTF</h1>
+
+        <!-- Barra de navegación -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="{{ url_for('index') }}">CTF UTTT</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    {% if session['usuario_id'] %}
+
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('foro') }}">Foro</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('ranking') }}">Ranking</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('soporte') }}">Soporte</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('recursos') }}">Recursos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('term_condi') }}">Términos y condiciones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('soporte') }}">Soporte</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('recursos') }}">Recursos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('term_condi') }}">Términos y condiciones</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Mensaje de bienvenida -->
+        {% if session['usuario_id'] %}
+            <div class="alert alert-success" role="alert">
+                Estás logueado como {{ session['usuario_usuario'] }}. ¡Buena suerte en los desafíos!
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                No estás logueado. <a href="{{ url_for('login') }}">Inicia sesión</a> o <a href="{{ url_for('registro') }}">regístrate</a> para empezar.
+            </div>
+        {% endif %}
+
+        <!-- Categorías disponibles -->
+        <h2>Categorías</h2>
+        <div class="row">
+            {% for categoria in categorias %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ categoria.nombre }}</h5>
+                            <p class="card-text">{{ categoria.descripcion }}</p>
+                            <a href="{{ url_for('categoria', categoria_id=categoria.id) }}" class="btn btn-primary">Ver desafíos</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <footer class="text-center mt-5">
+            <p>&copy; 2024 CTF belldc - Todos los derechos reservados. <br><a href="{{ url_for('term_condi') }}">Términos y condiciones</a></p>
+        </footer>
+    </div>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

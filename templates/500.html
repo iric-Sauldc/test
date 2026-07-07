@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - Error Interno del Servidor</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ff073a;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+        }
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            color: #ff073a;
+        }
+        .error-code {
+            font-size: 8em;
+            font-weight: bold;
+            color: #d1d100;
+            text-shadow: 0 0 20px rgba(255, 7, 58, 0.8);
+        }
+        p {
+            font-size: 1.5em;
+            color: #39ff14;
+        }
+        .hint {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #00d1d1;
+        }
+        .link-home {
+            color: #39ff14;
+            text-decoration: none;
+            border: 1px solid #39ff14;
+            padding: 10px 20px;
+            margin-top: 30px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .link-home:hover {
+            background-color: #39ff14;
+            color: #1a1a1a;
+        }
+        .glitch {
+            animation: glitch 1s infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(2px, -2px); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, 2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="error-code glitch">500</div>
+        <h1>Error Interno del Servidor</h1>
+        <p>Algo salió mal en los sistemas.</p>
+        <p>Quizás alguien intentó hackear nuestro núcleo...</p>
+        <div class="hint">Pista: los problemas a veces ocultan soluciones.</div>
+        <a href="/" class="link-home">Regresar al Cuartel General</a>
+    </div>
+</body>
+</html>

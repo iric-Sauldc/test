@@ -1,0 +1,114 @@
+body {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    font-family: 'Press Start 2P', cursive;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #ffcc00;
+}
+
+.container {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 700px;
+    margin-top: 100px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}
+
+p {
+    text-align: center;
+    color: #f1f1f1;
+    font-size: 18px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+}
+
+ul li {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffcc00;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff9900;
+}
+
+.list-group {
+    margin-top: 30px;
+}
+
+.list-group-item {
+    background-color: #444;
+    color: #f1f1f1;
+    border: 1px solid #666;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.list-group-item h5 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #ffcc00;
+}
+
+.badge {
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.btn-primary {
+    background-color: #ffcc00;
+    border: 1px solid #ff9900;
+    color: #1e1e1e;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ff9900;
+}
+
+.btn-secondary {
+    background-color: #444;
+    border: 1px solid #666;
+    color: #ffcc00;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #555;
+}
+
+footer {
+    margin-top: 30px;
+    color: #ffcc00;
+    text-align: center;
+}
+
+footer a {
+    color: #ffcc00;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

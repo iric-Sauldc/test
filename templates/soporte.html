@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte CTF</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Soporte CTF</h1>
+
+        <h2>1. Introducción y Guía de Inicio Rápido</h2>
+        <p><strong>Descripción general del CTF:</strong> Un CTF (Capture the Flag) es un evento en el que los participantes resuelven desafíos de seguridad informática para obtener "flags".</p>
+        <p><strong>Instrucciones iniciales:</strong> Regístrate en nuestra plataforma, accede a la lista de desafíos, encuentra las flags y envíalas para obtener puntos.</p>
+
+        <h2>2. FAQs (Preguntas Frecuentes)</h2>
+        <div class="section">
+            <strong>¿Cómo resuelvo un desafío?</strong>
+            <p>Investiga y aplica técnicas específicas para resolver cada desafío, según la categoría.</p>
+        </div>
+        <div class="section">
+            <strong>¿Qué hacer si me quedo atascado?</strong>
+            <p>Consulta las pistas, tutoriales o pregunta en nuestro chat en vivo.</p>
+        </div>
+
+        <h2>3. Soporte Técnico</h2>
+        <p><strong>Reportar errores:</strong> Usa el formulario de contacto para informarnos sobre problemas técnicos o errores.</p>
+
+        <h2>4. Documentación de Desafíos</h2>
+        <p><strong>Consulta de categorías:</strong> Explora la descripción detallada de cada categoría de desafío en nuestra plataforma.</p>
+
+        <h2>5. Soporte en Tiempo Real</h2>
+        <p><strong>Canales de comunicación:</strong> Únete a nuestro <a href="#" target="_blank">chat en Discord</a>.</p>
+
+        <h2>6. Reglas y Normas del CTF</h2>
+        <p><strong>Política de comportamiento:</strong> El respeto es esencial. Comportamientos inapropiados serán motivo de expulsión.</p>
+
+        <h2>7. Estado del CTF</h2>
+        <p><strong>Estado en vivo:</strong> Consulta el progreso del evento en tiempo real.</p>
+
+        <h2>8. Tutoriales y Recursos Externos</h2>
+        <p><strong>Recursos:</strong> Encuentra tutoriales útiles en criptografía, ingeniería inversa y más.</p>
+
+        <h2>9. Formulario de Contacto</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="mb-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('soporte') }}">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo electrónico</label>
+                <input type="email" class="form-control" id="correo" name="correo" required>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="back-btn">Enviar</button>
+        </form>
+
+        <h2>10. Resultados y Notificaciones</h2>
+        <p><strong>Resultados:</strong> Las puntuaciones estarán disponibles en tiempo real.</p>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('index') }}">
+                <button class="back-btn">Inicio</button>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
