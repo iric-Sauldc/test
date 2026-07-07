@@ -1,1 +1,37 @@
 
+name: Docker Compose Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-compose:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Levantar aplicación
+        run: |
+          docker compose up -d --build
+
+      - name: Verificar que el contenedor está arriba
+        run: |
+          docker compose ps
+          
+          if [ "$(docker compose ps -q | wc -l)" -eq 0 ]; then
+            echo "No hay contenedores ejecutándose"
+            exit 1
+          fi
+
+      - name: Mantener por 1 minuto
+        run: sleep 60
+
+      - name: Mostrar logs
+        run: docker compose logs
+
+      - name: Apagar contenedor
+        if: always()
+        run: docker compose down
